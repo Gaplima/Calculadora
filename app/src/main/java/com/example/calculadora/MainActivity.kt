@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
     private lateinit var tvDisplay: TextView
+    private lateinit var tvHistorico: TextView // ALTERAÇÃO: Histórico de cálculos
 
     private var currentInput: String = ""
     private var operand: Double? = null
@@ -22,6 +20,9 @@ class MainActivity : AppCompatActivity() {
 
         // TextView de display
         tvDisplay = findViewById(R.id.txtResultado)
+
+        // TextView de histórico
+        tvHistorico = findViewById(R.id.txtHistorico) // ALTERAÇÃO
 
         // Botões de dígitos
         val digits = listOf(
@@ -87,6 +88,11 @@ class MainActivity : AppCompatActivity() {
         if (operand != null && currentInput.isNotEmpty()) {
             val value = currentInput.toDoubleOrNull() ?: return
             val result = performOperation(operand!!, value, pendingOp)
+
+            // adiciona ao histórico
+            val expressao = "${operand?.toString()} $pendingOp $currentInput"
+            adicionarHistorico(expressao, result.toString())
+
             operand = null
             pendingOp = null
             currentInput = result.toString()
@@ -125,11 +131,18 @@ class MainActivity : AppCompatActivity() {
         tvDisplay.text = if (currentInput.isNotEmpty()) currentInput else (operand?.toString() ?: "0")
     }
 
+    //Função para adicionar histórico
+    private fun adicionarHistorico(expressao: String, resultado: String) {
+        val novoItem = "$expressao = $resultado\n"
+        tvHistorico.append(novoItem)
+    }
+
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString("currentInput", currentInput)
         outState.putDouble("operand", operand ?: Double.NaN)
         outState.putString("pendingOp", pendingOp)
+        outState.putString("historico", tvHistorico.text.toString()) // ALTERAÇÃO
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
@@ -138,6 +151,7 @@ class MainActivity : AppCompatActivity() {
         val opnd = savedInstanceState.getDouble("operand", Double.NaN)
         operand = if (opnd.isNaN()) null else opnd
         pendingOp = savedInstanceState.getString("pendingOp")
+        tvHistorico.text = savedInstanceState.getString("historico", "") // ALTERAÇÃO
         updateDisplay()
     }
 }
