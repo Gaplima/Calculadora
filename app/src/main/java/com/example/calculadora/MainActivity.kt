@@ -47,7 +47,9 @@ class MainActivity : AppCompatActivity() {
             "+" to R.id.btnSomar,
             "-" to R.id.btnSubtrair,
             "×" to R.id.btnMultiplicar,
-            "÷" to R.id.btnDividir
+            "÷" to R.id.btnDividir,
+            "%" to R.id.btnResto,
+            "**" to R.id.btnExponencial
         )
         ops.forEach { (op, id) ->
             findViewById<Button>(id).setOnClickListener { onOperator(op) }
@@ -105,10 +107,16 @@ class MainActivity : AppCompatActivity() {
             "+" -> a + b
             "-" -> a - b
             "×" -> a * b
+            "**" -> Math.pow(a, b)
             "÷" -> if (b == 0.0) {
                 Toast.makeText(this, "Divisão por zero", Toast.LENGTH_SHORT).show()
                 a
             } else a / b
+            "%" -> if (b == 0.0) {
+                Toast.makeText(this, "Divisão por zero", Toast.LENGTH_SHORT).show()
+                a
+            } else a % b
+
             else -> b
         }
     }

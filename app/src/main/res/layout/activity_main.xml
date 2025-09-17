@@ -42,26 +42,32 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <!-- Linha 1 -->
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnClear"
             style="@style/Widget.Material3.Button"
             android:text="C"
-            app:rippleColor="?attr/colorOnPrimaryContainer"/>
+            app:rippleColor="?attr/colorOnPrimaryContainer"
+            app:backgroundTint="@color/indigo"/>
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnBackspace"
             style="@style/Widget.Material3.Button"
             android:text="⌫"
-            app:rippleColor="?attr/colorOnPrimaryContainer"/>
+            app:rippleColor="?attr/colorOnPrimaryContainer"
+            app:backgroundTint="@color/indigo"/>
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnDividir"
+            android:id="@+id/btnExponencial"
             style="@style/Widget.Material3.Button"
-            android:text="÷"
-            app:rippleColor="?attr/colorOnPrimaryContainer"/>
+            android:text="xª"
+            app:rippleColor="?attr/colorOnPrimaryContainer"
+            app:backgroundTint="@color/indigo"/>
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnMultiplicar"
+            android:id="@+id/btnResto"
             style="@style/Widget.Material3.Button"
-            android:text="×"
-            app:rippleColor="?attr/colorOnPrimaryContainer"/>
+            android:text="Resto"
+            app:rippleColor="?attr/colorOnPrimaryContainer"
+            app:backgroundTint="@color/indigo"/>
+
 
         <!-- Linha 2 -->
         <com.google.android.material.button.MaterialButton
@@ -80,10 +86,12 @@
             android:text="9"
             app:rippleColor="?attr/colorOnPrimaryContainer"/>
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSubtrair"
+            android:id="@+id/btnSomar"
             style="@style/Widget.Material3.Button"
-            android:text="-"
-            app:rippleColor="?attr/colorOnPrimaryContainer"/>
+            android:text="+"
+            app:rippleColor="?attr/colorOnPrimaryContainer"
+            app:backgroundTint="@color/indigo"/>
+
 
         <!-- Linha 3 -->
         <com.google.android.material.button.MaterialButton
@@ -102,10 +110,12 @@
             android:text="6"
             app:rippleColor="?attr/colorOnPrimaryContainer"/>
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSomar"
+            android:id="@+id/btnSubtrair"
             style="@style/Widget.Material3.Button"
-            android:text="+"
-            app:rippleColor="?attr/colorOnPrimaryContainer" />
+            android:text="-"
+            app:rippleColor="?attr/colorOnPrimaryContainer"
+            app:backgroundTint="@color/indigo"/>
+
 
         <!-- Linha 4 -->
         <com.google.android.material.button.MaterialButton
@@ -124,10 +134,11 @@
             android:text="3"
             app:rippleColor="?attr/colorOnPrimaryContainer"/>
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnIgual"
+            android:id="@+id/btnMultiplicar"
             style="@style/Widget.Material3.Button"
-            android:text="="
-            app:rippleColor="?attr/colorOnPrimaryContainer"/>
+            android:text="×"
+            app:rippleColor="?attr/colorOnPrimaryContainer"
+            app:backgroundTint="@color/indigo"/>
 
         <!-- Linha 5 -->
         <com.google.android.material.button.MaterialButton
@@ -139,7 +150,21 @@
             android:id="@+id/btnPonto"
             style="@style/Widget.Material3.Button"
             android:text="."
-            app:rippleColor="?attr/colorOnPrimaryContainer" />
+            app:rippleColor="?attr/colorOnPrimaryContainer"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnIgual"
+            style="@style/Widget.Material3.Button"
+            android:text="="
+            app:rippleColor="?attr/colorOnPrimaryContainer"
+            app:backgroundTint="@color/cyan"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDividir"
+            style="@style/Widget.Material3.Button"
+            android:text="÷"
+            app:rippleColor="?attr/colorOnPrimaryContainer"
+            app:backgroundTint="@color/indigo"/>
+
+
     </GridLayout>
     <!-- Histórico de cálculos abaixo dos botões -->
     <ScrollView
